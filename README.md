@@ -1,246 +1,257 @@
-#  End-to-End CRM Sales Pipeline Azure Data Engineering Project
+# End-to-End Azure Sales Pipeline Analytics Project  
+### Azure Data Factory • Azure Databricks • Delta Lake • Azure SQL • Logic Apps • Azure Synapse • Power BI
 
-### Real-World Sales Pipeline Analytics | Azure Data Factory • Databricks • Synapse • Power BI
-
-This project delivers an end-to-end Azure Data Engineering solution built to handle real-world sales pipeline data. It demonstrates how to ingest on-premises data into Azure, store it securely in Data Lake Gen2, transform and validate it in Databricks, monitor end-to-end workflows with Logic Apps and Azure Monitor, and prepare the data for analytics using Azure Synapse.
-
-The final curated datasets power interactive Power BI dashboards, enabling businesses to track opportunities, win rates, deal stages, and revenue trends. The pipeline reflects industry-standard practices in scalability, reliability, security, and operational data engineering.
+This project showcases a **full-scale, production-ready Azure Data Engineering solution** built to transform raw CRM sales pipeline data into actionable business insights.  
+It covers the **entire data lifecycle** — ingestion, orchestration, transformation, monitoring, storage, and analytics — using modern Azure services.
 
 ---
 
-## 📌 **Why This Project Matters**
+## 📘 **Project Architecture**
 
-In fast-growing businesses, **sales pipeline data** is the heartbeat of revenue forecasting. Yet many organizations struggle with:
+![Architecture](./img/architecture.png)
 
-* Scattered or on-premises data silos
-* Dirty, inconsistent datasets
-* Poor visibility into sales performance
-* Lack of automated alerts for failures
-* Limited analytics capabilities
+The solution integrates:
 
-This project solves all of these pain points using a **cloud-native, scalable, secure Azure architecture**.
-
-By the end, we transform raw CSV files into **cleaned, structured, query-ready tables** powering an **interactive Power BI dashboard** that drives real business decisions such as:
-
-* Win rate trends
-* Deal stage analysis
-* Customer acquisition insights
-* Sales team performance
-* Revenue forecasting
+**Azure Data Factory (ADF)** – Orchestration, ingestion, Git integration
+**Azure Data Lake Storage Gen2 (ADLS)** – Central data storage (crm-data folder)
+**Azure Databricks** – Cleaning, transformation, schema standardization
+**Delta Lake** – Optimized storage for curated datasets
+**Azure Synapse Analytics** – SQL pools & serverless queries for advanced analytics, modeling, and downstream consumption
+**Azure SQL Database** – Final analytic storage layer
+**Logic Apps + Azure Monitor** – Alerts, operational monitoring
+**Power BI** – Executive dashboards & insights
 
 ---
 
-# 🏗️ **Architecture Overview**
+## **Source Data — CRM Sales Pipeline Dataset**
 
-Below is the end-to-end architecture implemented in this project:
+Raw CRM files stored in:
 
-![Architecture](img/architecture.png)
+```
 
-### **Architecture Components**
+/raw-data
 
-* **On-Premises CSV Data**
-* **Azure Data Factory**
+````
 
-  * Git-enabled development
-  * Self-Hosted Integration Runtime
-* **Azure Data Lake Storage Gen2** (Bronze → Silver → Gold layers)
-* **Logic Apps** for pipeline failure notifications
-* **Azure Monitor** for operational observability
-* **Azure Databricks** for transformations
-* **Azure Key Vault + Secret Scopes** for secure credentials
-* **Azure Synapse Analytics** for analysis
-* **Power BI** for reporting
+These include pipeline activities, company info, deals, products, sectors, and sales agent records.
+
+Example raw data validation:
+
+![Sales Pipeline Nulls](./img/salepipeline_nuls.png)
+
+![Accounts Null](./img/accounts_null.png)
 
 ---
 
-# 🎯 **What You’ll Learn**
+## 🏗️ **Azure Data Factory Pipelines**
 
-This project covers **eight major Azure skills** every Data Engineer must master:
+ADF orchestrates ingestion & movement of all CRM files into Data Lake.
 
-### **1️⃣ Move On-Prem Data to Cloud using Azure Data Factory**
+### **ADF Pipeline Overview**
+![Pipeline Activity](./img/pipelineactivity.png)
 
-* Built a Self-Hosted Integration Runtime
-* Configured pipelines for ingestion
-* Automated folder-based CSV ingestion
+### **Logic Apps Email Alerts**
+Automated notifications for failures, SLA breaches, or missing files.
 
-![Pipeline Activity](img/pipelineactivity.png)
+![Logic App](./img/logicapp.png)
 
----
+### **Azure Monitor Integration**
+Centralized pipeline monitoring & health tracking.
 
-### **2️⃣ Enable Git Integration for Version Control**
-
-Git integration ensures:
-
-* CI/CD readiness
-* Change tracking
-* Collaboration across teams
+![Azure Monitor](./img/azuremonitor.png)
 
 ---
 
-### **3️⃣ Manage Data with Azure Data Lake Gen2**
+## 🔧 **Data Transformation with Azure Databricks & Delta Lake**
 
-Data is organized using a medallion architecture:
+Transformation steps included:
 
-* **Bronze** — Raw landing zone
-* **Silver** — Cleaned and standardized
-* **Gold** — Analytics-ready tables
+- Handling nulls & missing values  
+- Standardizing column names  
+- Fixing date/time formats  
+- Removing duplicates  
+- Enforcing schema consistency  
+- Joining/splitting complex fields  
+- Mapping product → sector → revenue relationships  
 
-![Renamed Data Dictionary](img/rename_data_dictionary.png)
-![Renamed Accounts](img/rename_accounts.png)
+Example:
 
----
+![Data Mount](./img/data_mount.png)  
+![Transformed Data](./img/transformed_data_azure.png)
 
-### **4️⃣ Implement Automated Alerts with Logic Apps + Azure Monitor**
+Additionally, tables such as accounts, deals, and activities were cleaned and renamed:
 
-Failures trigger:
-
-* Email Notifications
-* Monitoring logs
-
-This increases **reliability** and reduces downtime.
-
-**Logic App:**
-
-![Logic App](img/logicapp.png)
-
-**Azure Monitor:**
-
-![Azure Monitor](img/azuremonitir.png)
+![Renamed Accounts](./img/rename_accounts.png)  
+![Data Dictionary](./img/rename_data_dictionary.png)
 
 ---
 
-### **5️⃣ Clean & Transform Data in Azure Databricks**
+## 🗄️ **Azure SQL Database — Curated Analytical Layer**
 
-Databricks performs:
+Final curated tables loaded into Azure SQL for downstream BI consumption.
 
-* Null handling
-* Schema standardization
-* Data type corrections
-* Deduplication
-* Business logic transformations
-
-**Handling Nulls Example:**
-
-![Accounts Nulls](img/accounts_null.png)
-![Sales Pipeline Nulls](img/salepipeline_nuls.png)
-
-**Mounted Storage:**
-
-![Data Mount](img/data_mount.png)
-
-**Transformed Data in Azure:**
-
-![Transformed Data Azure](img/transformed_data_azure.png)
+![View Tables](./img/view_tables.png)
 
 ---
 
-### **6️⃣ Secure Credentials with Azure Key Vault + Secret Scopes**
+# 📊 **Power BI Report — Sales Pipeline Insights Dashboard**
 
-No hardcoded secrets.
-Databricks uses a **secure secret scope** to access:
+This dashboard tells the full story of sales performance, revenue, deal outcome trends, product strength, and sales agent effectiveness.
 
-* Storage Keys
-* Database Credentials
-* SAS Tokens
+![Power BI Report](./img/PowerBI_report.png)
+---
 
-This follows cloud security best practices.
+## 🟦 **1. Sales Agent Performance by Close Value**  
+### *Clustered Bar Chart*
+
+Shows which agents drive the most revenue and how they rank across deal closure values.  
+This visual helps management:
+
+- Identify top performers  
+- Allocate leads based on strengths  
+- Evaluate consistency across quarters  
 
 ---
 
-### **7️⃣ Load Clean Data into Azure Synapse Analytics**
+## 🟦 **2. Total Sales by Month**
+### *Line Chart*
 
-Synapse provides:
+Tracks month-by-month revenue trends using `close date` vs `close value`.  
 
-* Serverless SQL queries
-* Scalable analytics
-* Ability to connect downstream to Power BI
+This reveals:
 
-![View Tables](img/view_tables.png)
-
----
-
-### **8️⃣ Build Interactive Dashboards with Power BI**
-
-Final visualizations include:
-
-* Win Rate%
-* Sales Funnel Performance
-* Deals Won vs Lost
-* Customer Segmentation
-* Revenue by Region / Account Manager
-
-These insights help organizations:
-
-* Improve sales strategy
-* Identify bottlenecks
-* Predict revenue
-* Strengthen decision-making
+- Peak sales periods  
+- Slumps requiring intervention  
+- Seasonal cycles  
+- Pipeline forecasting opportunities  
 
 ---
 
-# 🔥 **Business Impact of This Project**
+## 🟦 **3. Revenue by Office Location**
+### *Azure Maps Visual*
 
-This solution directly supports business growth by:
+Displays geographical revenue distribution.
 
-### ✔️ Ensuring accurate sales forecasting
+Helps answer:
 
-### ✔️ Reducing manual data preparation
-
-### ✔️ Improving visibility across the sales lifecycle
-
-### ✔️ Providing automated monitoring & alerts
-
-### ✔️ Enabling real-time analytics for decision-makers
-
-### ✔️ Bringing enterprise-grade security and scalability
-
-For any organization, especially those with growing sales teams, this solution becomes a **strategic asset**.
+- Which branches outperform others  
+- Regional business strength  
+- Areas requiring marketing spend or team reinforcement  
 
 ---
 
-# 🧠 **Who This Project Is For**
+## 🟦 **4. Highest Revenue Companies**
+### *Funnel Chart — Account by Revenue*
 
-* Aspiring & Professional **Data Engineers**
-* Azure Certification Candidates
-* Cloud Engineers
-* Anyone building a **high-value portfolio**
-* Organizations needing scalable data pipelines
+Highlights the top revenue-generating accounts across the pipeline.  
+Useful for:
 
----
-
-# 🧪 **Technologies Used**
-
-| Category        | Tools                                    |
-| --------------- | ---------------------------------------- |
-| Cloud Storage   | Azure Data Lake Gen2                     |
-| Ingestion       | Azure Data Factory                       |
-| Orchestration   | Logic Apps, Azure Monitor                |
-| Processing      | Azure Databricks                         |
-| Security        | Azure Key Vault, Databricks Secret Scope |
-| Analytics       | Azure Synapse Analytics                  |
-| Visualization   | Power BI                                 |
-| Version Control | Git Integration                          |
+- Identifying strategic clients  
+- Focusing on high-value relationships  
+- Prioritizing account-based marketing (ABM) strategies  
 
 ---
 
-# 📘 **How to Use This Project**
+## 🟦 **5. Product Wins Across Deal Stages**
+### *Column Chart — Product vs Deal Stage*
 
-1. Clone the repo
-2. Deploy the ADF JSON pipelines
-3. Run the Databricks notebooks
-4. Configure Key Vault + Secret Scope
-5. Publish data to Synapse
-6. Connect Power BI for reporting
+Shows which products:
 
-Everything is modular so you can reuse components for your own projects.
+- Win the most deals  
+- Lose the most deals  
+- Maintain consistent performance across stages  
+
+This helps leadership understand product-market fit.
+
+---
+
+## 🟦 **6. Revenue by Sector**
+### *Donut Chart*
+
+Provides a breakdown of revenue contribution across sectors.  
+Useful for:
+
+- Diversification analysis  
+- Identifying strong/weak industries  
+- Strategic repositioning  
 
 ---
 
-# 🏁 **Final Thoughts**
+# 🧮 **Power BI KPIs**
 
-This project is a **realistic, enterprise-grade, interview-ready** Azure Data Engineering solution.
-It demonstrates your ability to build a **complete data lifecycle** — from ingestion to visualization — while applying best practices across governance, monitoring, transformation, and analytics.
+| KPI | Value | Definition |
+|------|--------|------------|
+| **Total Deals Closed** | **6,711** | Total close value across all deals |
+| **Deals Won** | **4,238** | Close value where `deal_stage = "won"` |
+| **Deals Lost** | **2,473** | Close value where `deal_stage = "lost"` |
+| **Win Rate %** | **63%** | % of won deals out of total outcomes |
 
-If you're working towards **Azure Data Engineer Associate**, **Fabric Analyst**, or building a strong **GitHub portfolio**, this project checks every box.
+### **Win Rate DAX Measure**
+
+```DAX
+WinRate% =
+DIVIDE(
+    CALCULATE(
+        COUNTROWS('Sales Pipeline'),
+        'Sales Pipeline'[deal_stage] = "won"
+    ),
+    CALCULATE(
+        COUNTROWS('Sales Pipeline'),
+        'Sales Pipeline'[deal_stage] = "won"
+            || 'Sales Pipeline'[deal_stage] = "lost"
+    ),
+    0
+)
+````
 
 ---
+
+# 💡 **Why This Project Matters**
+
+This project demonstrates end-to-end data engineering capability:
+
+* Cloud ingestion strategy
+* Pipeline orchestration
+* Distributed data transformation
+* Production data modeling
+* Operational monitoring
+* KPI-driven executive reporting
+
+The final solution enables businesses to answer:
+
+* *Which agents perform best?*
+* *Which products win the most deals?*
+* *Which regions generate the highest revenue?*
+* *Are we improving win rates over time?*
+* *How healthy is our sales pipeline?*
+
+The project is production-grade and scalable — perfect for enterprise CRM analytics.
+
+---
+
+# 🧾 **Technologies Used**
+
+* Azure Data Factory
+* Azure Storage (ADLS Gen2)
+* Azure Databricks
+* PySpark / Delta Lake
+* Azure SQL Database
+* Azure Monitor
+* Logic Apps
+* Azure Synapse
+* Power BI
+
+---
+
+# 🎯 **Conclusion**
+
+This project takes a **raw CRM dataset** and transforms it into a **sales intelligence engine** powered by Azure.
+It demonstrates cloud engineering excellence, real-world data pipelines, and actionable business insights — making it ideal for portfolios, interviews, and enterprise implementation.
+
+---
+
+# 🌐 **Contact / Portfolio**
+
+For collaborations or technical inquiries, feel free to reach out or explore additional projects.
+
+```

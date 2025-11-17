@@ -1,0 +1,9 @@
+{
+	"name": "CRMSalesDataFactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4b991928-2717-4840-9bba-2a41b616f70b",
+		"tenantId": "262f1cbb-d380-4b2c-85bb-d248959fa123"
+	}
+}

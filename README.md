@@ -1,10 +1,10 @@
 #  End-to-End CRM Sales Pipeline Azure Data Engineering Project
 
-### **Real-World Sales Pipeline Analytics | Azure Data Factory • Databricks • Synapse • Power BI**
+### Real-World Sales Pipeline Analytics | Azure Data Factory • Databricks • Synapse • Power BI
 
-This project demonstrates a **full-scale, production-focused Azure Data Engineering pipeline**, built to solve real business challenges in managing, transforming, securing, and analyzing sales pipeline data.
+This project delivers an end-to-end Azure Data Engineering solution built to handle real-world sales pipeline data. It demonstrates how to ingest on-premises data into Azure, store it securely in Data Lake Gen2, transform and validate it in Databricks, monitor end-to-end workflows with Logic Apps and Azure Monitor, and prepare the data for analytics using Azure Synapse.
 
-Whether you're preparing for **Azure Data Engineering interviews**, **Microsoft certifications**, or building a **strong portfolio**, this project delivers hands-on experience across the entire modern data lifecycle.
+The final curated datasets power interactive Power BI dashboards, enabling businesses to track opportunities, win rates, deal stages, and revenue trends. The pipeline reflects industry-standard practices in scalability, reliability, security, and operational data engineering.
 
 ---
 

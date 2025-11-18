@@ -75,6 +75,10 @@ Transformation-ready files are placed in transdormed-data.
 
 # 🔄 **3. Data Cleaning & Transformation — Azure Databricks**
 
+Databricks notebooks were mounted using secure credentials:
+
+![Data Mount](img/data_mount.PNG)
+
 Databricks notebooks performed:
 
 * Column renaming
@@ -90,10 +94,6 @@ Databricks notebooks performed:
 * Creating curated tables
 
 * Writing Delta format outputs to **Silver → Gold**
-
-Databricks notebooks were mounted using secure credentials:
-
-![Data Mount](img/data_mount.PNG)
 
 ---
 

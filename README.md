@@ -105,7 +105,10 @@ Databricks notebooks performed:
 
 ---
 
-# 🔔 **5. Monitoring & Alerts**
+# 🔔 **5. Pipeline Activity**
+![Pipeline Activity](img/pipelineactivity.PNG)
+
+# 🔔 **6. Monitoring & Alerts**
 
 ### 🔹 Azure Monitor
 

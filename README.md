@@ -1,7 +1,20 @@
 # **End-to-End Azure Data Engineering Project — CRM Sales Pipeline Analytics**
 
+Building a Fully Functional Production-Grade Azure Data Engineering CRM Sales Pipeline
 This project showcases a **real-world, production-grade Azure Data Engineering pipeline** built to ingest, clean, transform, secure, monitor, and analyze CRM Sales Pipeline data.
-It demonstrates how modern data platforms integrate Azure services end-to-end to deliver **business-ready insights**.
+Modern businesses rely on sales intelligence, but CRM data is often scattered across CSVs, Excel files, and local drives. This project creates a fully automated **Azure Data Engineering solution** capable of ingesting, transforming, and visualizing sales data.
+It integrates both **cloud ingestion (ADLS → ADF → Databricks → SQL → Power BI)** and **on-premises ingestion** via **Self-Hosted Integration Runtime (SHIR)**.
+
+It also demonstrates how modern data platforms integrate Azure services end-to-end to deliver **business-ready insights**.
+
+---
+
+## Article Reference
+
+This project is inspired by and documented in the Medium article:
+
+**Building a Fully Functional Production-Grade Azure Data Engineering CRM Sales Pipeline**  
+Read it here: [Medium Article](https://medium.com/@codegnerdev/building-a-fully-functional-production-grade-azure-data-engineering-crm-sales-pipeline-8da9084ec798)
 
 ---
 
@@ -127,7 +140,7 @@ Email alerts for success/failure:
 
 ---
 
-# 🧠 **6. Analytics Layer — Azure Synapse Serverless SQL**
+# 🧠 **7. Analytics Layer — Azure Synapse Serverless SQL**
 
 Cleaned Gold data was queried using Synapse’s SQL Workspace.
 
@@ -145,7 +158,7 @@ These views powered the Power BI dashboards.
 
 ---
 
-# 📊 **7. Business Intelligence — Power BI Dashboard**
+# 📊 **8. Business Intelligence — Power BI Dashboard**
 
 The final Power BI report provides **critical business insights** for decisions in sales strategy, agent performance, product performance, and revenue distribution.
 

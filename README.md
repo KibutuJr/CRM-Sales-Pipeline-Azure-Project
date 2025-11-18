@@ -7,7 +7,7 @@ It demonstrates how modern data platforms integrate Azure services end-to-end to
 
 # 📌 **Project Architecture**
 
-![Architecture Diagram](img/architecture.PNG)
+![Architecture Diagram](img/Architecture.PNG)
 
 This solution covers the full data lifecycle:
 
@@ -82,7 +82,7 @@ Databricks notebooks performed:
   ![Rename Data Dictionary](img/rename_data_dictionary.PNG)
 
 * Null handling
-  ![Accounts Null Check](img/account_null.PNG)
+  ![Accounts Null Check](img/account_nulls.PNG)
   ![Sales Pipeline Null Check](img/salepipeline_nulls.PNG)
 
 * Data standardization
@@ -118,6 +118,9 @@ Used for pipeline run health:
 Email alerts for success/failure:
 
 ![Logic App](img/logicapp.PNG)
+
+### 🔹 Email Alerts
+![Email](img/email.PNG)
 
 ---
 

@@ -7,7 +7,7 @@ It demonstrates how modern data platforms integrate Azure services end-to-end to
 
 # 📌 **Project Architecture**
 
-![Architecture Diagram](img/architecture.png)
+![Architecture Diagram](img/architecture.PNG)
 
 This solution covers the full data lifecycle:
 
@@ -48,10 +48,10 @@ Each dataset was copied into the **Bronze Layer** of ADLS.
 
 ## 🔹 Using Azure IR (AutoResolveIntegrationRuntime)
 
-You also tested ingestion using **Azure IR**, and both methods worked:
+Also tested ingestion using **Azure IR**, and both methods worked:
 
-📌 **SHIR** worked when ingesting on-prem files.
-📌 **Azure IR** worked when files were already uploaded to ADLS.
+-📌 **SHIR** worked when ingesting on-prem files.
+-📌 **Azure IR** worked when files were already uploaded to ADLS.
 
 This demonstrates knowledge of **when each IR is required** — an important skill for Azure Data Engineers.
 
@@ -62,7 +62,7 @@ This demonstrates knowledge of **when each IR is required** — an important ski
 All ingested data lands in ADLS under structured folders:
 
 ```
-/raw-data/
+
 /transformed-data/
 
 ```
@@ -82,7 +82,7 @@ Databricks notebooks performed:
   ![Rename Data Dictionary](img/rename_data_dictionary.PNG)
 
 * Null handling
-  ![Accounts Null Check](img/accounts_null.PNG)
+  ![Accounts Null Check](img/account_null.PNG)
   ![Sales Pipeline Null Check](img/salepipeline_nulls.PNG)
 
 * Data standardization
@@ -111,7 +111,7 @@ Databricks notebooks were mounted using secure credentials:
 
 Used for pipeline run health:
 
-![Azure Monitor](img/azuremonitir.PNG)
+![Azure Monitor](img/azuremonitor.PNG)
 
 ### 🔹 Logic App Email Alerts
 
